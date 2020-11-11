@@ -1,20 +1,15 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {
   Formik,
-  Field,
   Form,
   useField,
   FieldAttributes,
-  FieldArray
 } from "formik";
 import {
   TextField,
   Button,
-  Checkbox,
   Radio,
   FormControlLabel,
-  Select,
-  MenuItem
 } from "@material-ui/core";
 import * as yup from "yup";
 
@@ -30,7 +25,7 @@ const MyTextField: React.FC<FieldAttributes<{}>> = ({
   style,
   ...props
 }) => {
-  const [field, meta] = useField<{}>(props);
+  const [field] = useField<{}>(props);
   return (
     <TextField
       placeholder={placeholder}
@@ -110,7 +105,7 @@ const App: React.FC = () => {
 
         }}
       >
-        {({ values, errors, isSubmitting }) => (
+        {({ values }) => (
           <Form>
             <h2 style={{display: "flex",  marginLeft: -60}}>Conversor de lista para robô</h2>
             <div style={{display: "flex", flexDirection:'column', marginTop: 30,  marginBottom: 15}}>
@@ -118,19 +113,19 @@ const App: React.FC = () => {
             <div style={{display: "flex", flexDirection:'row', marginBottom: 15 }}>
 
 
-            <MyTextField value={dia} style={{marginRight: 25, width: 50}} placeholder="Dia" name="dia" />
-            <MyTextField value={mes} style={{marginRight: 25, width: 50}} placeholder="Mês" name="mes" />
-            <MyTextField value={ano} style={{marginRight: 25, width: 50}} placeholder="Ano" name="ano" />
+            <MyTextField onChange={(t: any) => setDia(t)} value={dia} style={{marginRight: 25, width: 50}} placeholder="Dia" name="dia" />
+            <MyTextField onChange={(t: any) => setMes(t)} value={mes} style={{marginRight: 25, width: 50}} placeholder="Mês" name="mes" />
+            <MyTextField onChange={(t: any) => setAno(t)} value={ano} style={{marginRight: 25, width: 50}} placeholder="Ano" name="ano" />
             </div>
 
             <div style={{display: "flex", flexDirection:'row', marginBottom: 15 }}>
 
-            <MyTextField value={hora} style={{marginRight: 25, width: 50}} placeholder="Hora" name="hora" />
-            <MyTextField value={minuto} style={{marginRight: 25, width: 50}} placeholder="Minuto" name="minuto" />
+            <MyTextField onChange={(t: any) => setHora(t)} value={hora} style={{marginRight: 25, width: 50}} placeholder="Hora" name="hora" />
+            <MyTextField onChange={(t: any) => setMinuto(t)} value={minuto} style={{marginRight: 25, width: 50}} placeholder="Minuto" name="minuto" />
             </div>
 
 
-            <MyTextField  value={par} style={{marginRight: 25, width: 150}} placeholder="Moeda/Par" name="par"  />
+            <MyTextField  onChange={(t: any) => setPar(t)} value={par} style={{marginRight: 25, width: 150}} placeholder="Moeda/Par" name="par"  />
             </div>
             
             
