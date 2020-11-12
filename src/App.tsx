@@ -92,8 +92,9 @@ const App: React.FC = () => {
 
   return (
 
-    <div style={{display: 'flex', alignSelf: 'center', justifyContent:'center', flexDirection: 'column', width: '100vw', marginLeft: '40%'}}>
+    <div style={{display: 'flex', alignSelf: 'center', justifyContent:'center', flexDirection: 'column', width: '100%'}}>
       <Formik
+      
         validateOnChange={true}
         initialValues={{}}
         validationSchema={validationSchema}
@@ -106,8 +107,10 @@ const App: React.FC = () => {
         }}
       >
         {({ values }) => (
-          <Form>
-            <h2 style={{display: "flex",  marginLeft: -60}}>Conversor de lista para robô</h2>
+          <Form style={{
+            position: 'absolute', top: 30, alignSelf: 'center'
+          }}>
+            <h2 style={{display: "flex"}}>Conversor de lista para robô</h2>
             <div style={{display: "flex", flexDirection:'column', marginTop: 30,  marginBottom: 15}}>
 
             <div style={{display: "flex", flexDirection:'row', marginBottom: 15 }}>
@@ -129,7 +132,7 @@ const App: React.FC = () => {
             </div>
             
             
-            <div>Tipos</div>
+            <div style={{display: "flex", marginTop: 30}}>Tipo</div>
             <MyRadio name="yogurt" type="radio" value="PUTT" label="PUTT" />
             <MyRadio
               name="yogurt"
@@ -138,9 +141,13 @@ const App: React.FC = () => {
               label="CALL"
             />
             
-            <div>
+            <div style={{display: "flex", flexDirection:'row',  marginTop: 20}}>
               <Button style={{background: 'green', color: 'white'}} type="submit">
                 gerar
+              </Button>
+
+              <Button style={{background: 'red', color: 'white', marginLeft: 15 }} onClick={() => setList([])} type="button">
+                limpar
               </Button>
             </div>
 
@@ -158,9 +165,9 @@ const App: React.FC = () => {
       ))}
       </div>
 
-      <div>
+      <div style={{display: 'flex', position: 'absolute', bottom: 30, alignSelf: 'center', flexDirection: 'column'}}>
         <h4>Se gostou e quiser ajudar é só fazer uma doação. Muito Obrigado!</h4>
-        <a style={{background: 'blue', color: 'white', textDecoration: 'none', padding: 10, borderRadius: 4}} href="http://mpago.la/19NA3aJ" target="blank">Doar</a>
+        <a style={{textAlign: 'center',background: 'blue', color: 'white', textDecoration: 'none', padding: 10, borderRadius: 4}} href="http://mpago.la/19NA3aJ" target="blank">Doar</a>
         {/* <a mp-mode="dftl" href="http://mpago.la/1EPyf2Y" className="blue-ar-l-rn-none">Assinar</a> */}
         
       </div>
